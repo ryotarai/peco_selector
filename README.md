@@ -1,6 +1,6 @@
 # PecoSelector
 
-TODO: Write a gem description
+Select objects with peco.
 
 ## Installation
 
@@ -14,13 +14,14 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install peco_selector
-
 ## Usage
 
-TODO: Write usage instructions here
+```
+bob    = Object.new
+alice  = Object.new
+result = PecoSelector.select_from(bob: bob, alice: alice)
+result # => [bob]
+```
 
 ## Contributing
 
