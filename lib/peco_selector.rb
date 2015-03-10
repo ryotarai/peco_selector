@@ -30,7 +30,9 @@ module PecoSelector
         end
       end
 
-      candidates.each_value.select do |value|
+      candidates.map do |_, value|
+        value
+      end.select do |value|
         object_ids.include?(value.object_id)
       end
     end
