@@ -16,7 +16,7 @@ And then execute:
 
 ## Usage
 
-```
+```ruby
 bob    = Object.new
 alice  = Object.new
 result = PecoSelector.select_from(bob: bob, alice: alice)
