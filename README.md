@@ -19,7 +19,11 @@ And then execute:
 ```ruby
 bob    = Object.new
 alice  = Object.new
+
 result = PecoSelector.select_from(bob: bob, alice: alice)
+# or
+result = PecoSelector.select_from([['bob', bob], ['alice', alice]])
+
 result # => [bob]
 ```
 
