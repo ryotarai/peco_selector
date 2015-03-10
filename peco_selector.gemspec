@@ -7,10 +7,9 @@ Gem::Specification.new do |spec|
   spec.name          = "peco_selector"
   spec.version       = PecoSelector::VERSION
   spec.authors       = ["Ryota Arai"]
-  spec.email         = ["ryota-arai@cookpad.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.email         = ["ryota.arai@gmail.com"]
+  spec.summary       = %q{Select objects with peco}
+  spec.homepage      = "https://github.com/ryotarai/peco_selector"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
