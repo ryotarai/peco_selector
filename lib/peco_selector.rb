@@ -13,7 +13,9 @@ module PecoSelector
 
     def select_from(candidates, options = {})
       prompt = options[:prompt] || "QUERY>"
-      object_ids = nil
+
+      stdout_str = nil
+      stderr_str = nil
 
       Open3.popen3("#{PECO_BIN} --null --prompt #{Shellwords.escape(prompt)}") do |stdin, stdout, stderr, wait_thr|
         candidates.each do |display, value|
@@ -21,14 +23,17 @@ module PecoSelector
         end
         stdin.close
 
-        object_ids = stdout.read.strip.split("\n").map(&:to_i)
+        stdout_str = stdout.read
+        stderr_str = stderr.read
 
         unless wait_thr.value.exitstatus == 0
-          $stdout.print stdout.read
-          $stderr.print stderr.read
+          $stdout.print stdout_str
+          $stderr.print stderr_str
           abort
         end
       end
+
+      object_ids = stdout_str.strip.split("\n").map(&:to_i)
 
       candidates.map do |_, value|
         value
