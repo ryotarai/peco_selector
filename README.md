@@ -27,6 +27,12 @@ result = PecoSelector.select_from([['bob', bob], ['alice', alice]])
 result # => [bob]
 ```
 
+```ruby
+result = PecoSelector.select_from(['bob', 'alice'])
+
+result # => ['bob']
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/peco_selector/fork )
