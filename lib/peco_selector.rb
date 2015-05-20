@@ -19,6 +19,7 @@ module PecoSelector
 
       Open3.popen3("#{PECO_BIN} --null --prompt #{Shellwords.escape(prompt)}") do |stdin, stdout, stderr, wait_thr|
         candidates.each do |display, value|
+          value ||= display
           stdin.puts "#{display}\x00#{value.object_id}"
         end
         stdin.close
@@ -35,8 +36,8 @@ module PecoSelector
 
       object_ids = stdout_str.strip.split("\n").map(&:to_i)
 
-      candidates.map do |_, value|
-        value
+      candidates.map do |display, value|
+        value || display
       end.select do |value|
         object_ids.include?(value.object_id)
       end
