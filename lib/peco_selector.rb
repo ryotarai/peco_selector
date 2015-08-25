@@ -21,11 +21,12 @@ module PecoSelector
     ensure_peco_available
 
     prompt = options[:prompt] || "QUERY>"
+    query  = options[:query] || ""
 
     stdout_str = nil
     stderr_str = nil
 
-    Open3.popen3("#{PECO_BIN} --null --prompt #{Shellwords.escape(prompt)}") do |stdin, stdout, stderr, wait_thr|
+    Open3.popen3([PECO_BIN, "--null", "--prompt", prompt, "--query", query].shelljoin) do |stdin, stdout, stderr, wait_thr|
       candidates.each do |display, value|
         value ||= display
         stdin.puts "#{display}\x00#{value.object_id}"
